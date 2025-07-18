@@ -1,2 +1,2 @@
 # RPS3
-rock paper scissors game
+Tic tac toe game
