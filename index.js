@@ -12,10 +12,12 @@ let turn = X;
  }
 
  function gameStart(){};
- function GameOver(){};
+ function GameOver(){
+  board.array ==! 2? "GAMEOVER": continueGame;
+ };
  function SwitchPlayer(){
    if (turn === x){
       player = O;
-      countinuegame();
+      continuegame();
    } 
  };
