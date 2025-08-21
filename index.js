@@ -1,23 +1,29 @@
 const container= document.querySelector("div");
-let turn = X;
+ let currentPlayer = X ;
 
  const board ={
-    array :[2,2,2,2,2,2,2,2,2,2]
+    array :["null","null","null","null","null","null","null","null","null"]
 
  }
 
  const person = {
-   person1: X,
-    person2: O,
+   playerOne: X,
+    playerTwo: O,
  }
 
- function gameStart(){};
+ function gameStart(current){
+
+ };
  function GameOver(){
-  board.array ==! 2? "GAMEOVER": continueGame;
+  board.array ==! "null"? "GAMEOVER": continueGame;
+  console.log("GameOver");
  };
  function SwitchPlayer(){
-   if (turn === x){
-      player = O;
-      continuegame();
-   } 
+  
+   currentPlayer === X ? "O":"X";
+   return currentPlayer
  };
+
+ function continueGame(placeHolder){
+
+ }
