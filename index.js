@@ -1,9 +1,18 @@
+console.log("Get Ready to Play!!");
+ setTimeout(function(){console.log("gameStart!!!");},3000);
+
+
+
+
 const container= document.querySelector("div");
+
 let gameStart= false;
- let currentPlayer = "X" ;
+let currentPlayer = "X" ;
 
  const board ={
-    array :["null","null","null","null","null","null","null","null","null"]
+    array :["null","null","null"
+           ,"null","null","null"
+           ,"null","null","null"]
 
  }
 
