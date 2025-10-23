@@ -6,11 +6,14 @@ console.log("Get Ready to Play!!");
 
 //make table
 const container= document.querySelector("div");
-let tile = document.querySelector("div");
+for (let i = 1; i <= 9; i++){
+  const div = document.createElement("div");
+  div.className = "box";
+  div.textContent = "";
+  container.appendChild(div);
 
-// creating DOM elements
-const playBoard = document.createElement("div");
-//playBoard.setAttribute(height:"20px",)
+}
+
 
 //Gameboard object
  const gameBoard ={
@@ -31,19 +34,24 @@ const playBoard = document.createElement("div");
 
  // Control flow object 
  const control = {
-   gameStart:false,
-   currentPlayer : "X" ,
-
-  playGame(current){
+    gameStart:false,
+   
+  playGame(){
     gameStart= true;
-  if (current === "X"){
-    console.log("where are you playing X");
-    board.array=person.playerOne;
-  }
-   else if(current ==="O"){
-   console.log("where are you playing O")
-   board.array=person.playerTwo;
-  } 
+    let currentPlayer = "X";
+
+    if (currentPlayer === "X"){
+      console.log("it's your turn player X");
+      addEventListener
+      gameBoard.boardArray.push(person.playerOne);
+      currentPlayer = "O";
+    }
+    else if(currentPlayer ==="O"){
+      console.log("it's your turn player O")
+      board.array=person.playerTwo;
+      currentPlayer = "X";
+    } 
+    return this.gameStart,currentPlayer;
  },
 
 
