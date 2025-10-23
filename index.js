@@ -38,7 +38,7 @@ const playBoard = document.createElement("div");
 
 // functionality to end game.
  function GameOver(){
-  board.array ==! "null"? "GAMEOVER": continueGame;
+  board.array !== "null"? "GAMEOVER": continueGame;
   console.log("GameOver");
  };
  function SwitchPlayer(){
