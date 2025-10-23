@@ -4,54 +4,68 @@ console.log("Get Ready to Play!!");
 
 
 
-
+//make table
 const container= document.querySelector("div");
+let tile = document.querySelector("div");
 
-let gameStart= false;
-let currentPlayer = "X" ;
 // creating DOM elements
 const playBoard = document.createElement("div");
 //playBoard.setAttribute(height:"20px",)
- const board ={
-    array :["null","null","null"
-           ,"null","null","null"
-           ,"null","null","null"]
+
+//Gameboard object
+ const gameBoard ={
+    boardArray :["null","null","null"
+                ,"null","null","null"
+                ,"null","null","null"]
 
  }
-
+// Player object
  const person = {
     playerOne: "X",
     playerTwo: "O",
+    playerOneName: playerOneName = alert("what is the player X name?"),
+    playerTwoName: playerTwoName = alert("what is the player O name?"),
+    playerOneScore: 0,
+    playerTwoScore: 0
  }
 
- // functionality to playgame
- function playGame(current){
-   gameStart= true;
+ // Control flow object 
+ const control = {
+   gameStart:false,
+   currentPlayer : "X" ,
+
+  playGame(current){
+    gameStart= true;
   if (current === "X"){
-   console.log("where are you playing X");
+    console.log("where are you playing X");
     board.array=person.playerOne;
-  } else if(current ==="O"){
+  }
+   else if(current ==="O"){
    console.log("where are you playing O")
- board.array=person.playerTwo;
+   board.array=person.playerTwo;
   } 
- };
+ },
+
 
 // functionality to end game.
- function GameOver(){
+  gameOver(){
   board.array !== "null"? "GAMEOVER": continueGame;
   console.log("GameOver");
- };
- function SwitchPlayer(){
-   
+ },
+  SwitchPlayer(){
    currentPlayer === X ? "O":"X";
    return currentPlayer
- };
+ },
 
  // functionality to manage game state and flow.
- function continueGame(placeHolder){
+  continueGame(placeHolder){
     console.log(`it's ${placeHolder}'s turn to Play!`);
    playGame();
  }
+}
+
+
+
 
  // creating eventlistners for DOM elements.
  function eventPropagation(){
