@@ -37,31 +37,29 @@ for (let i = 1; i <= 9; i++){
     gameStart:false,
    
   playGame(){
-    gameStart= true;
-    let currentPlayer = "X";
+    this.gameStart= true;
+    let currentPlayer = person.playerOne;
 
     if (currentPlayer === "X"){
       console.log("it's your turn player X");
-      addEventListener
-      gameBoard.boardArray.push(person.playerOne);
-      currentPlayer = "O";
+      div.addEventListener("click",play)
+       this.switchPlayer;
     }
     else if(currentPlayer ==="O"){
       console.log("it's your turn player O")
       board.array=person.playerTwo;
-      currentPlayer = "X";
+      this.switchPlayer;
     } 
     return this.gameStart,currentPlayer;
  },
-
 
 // functionality to end game.
   gameOver(){
   board.array !== "null"? "GAMEOVER": continueGame;
   console.log("GameOver");
  },
-  SwitchPlayer(){
-   currentPlayer === X ? "O":"X";
+  switchPlayer(){
+   currentPlayer === person.playerOne ? person.playerTwo:person.playerOne;
    return currentPlayer
  },
 
@@ -79,3 +77,6 @@ for (let i = 1; i <= 9; i++){
  function eventPropagation(){
  // add eventListeners for Players
  }
+
+
+ 
