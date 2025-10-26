@@ -5,7 +5,7 @@ console.log("Get Ready to Play!!");
 
 
 //make table
-const container= document.querySelector("div");
+const container= document.querySelector(".container");
 for (let i = 1; i <= 9; i++){
   const div = document.createElement("div");
   div.className = "box";
@@ -17,9 +17,9 @@ for (let i = 1; i <= 9; i++){
 
 //Gameboard object
  const gameBoard ={
-    boardArray :["null","null","null"
-                ,"null","null","null"
-                ,"null","null","null"]
+    boardArray :[null,null,null
+                ,null,null,null
+                ,null,null,null]
 
  }
 // Player object
@@ -35,43 +35,51 @@ for (let i = 1; i <= 9; i++){
  // Control flow object 
  const control = {
     gameStart:false,
-   
-  playGame(){
-    this.gameStart= true;
-    let currentPlayer = person.playerOne;
+   currentPlayer: null,
 
-    if (currentPlayer === "X"){
-      console.log("it's your turn player X");
-      div.addEventListener("click",play)
-       this.switchPlayer;
-    }
-    else if(currentPlayer ==="O"){
-      console.log("it's your turn player O")
-      board.array=person.playerTwo;
-      this.switchPlayer;
-    } 
-    return this.gameStart,currentPlayer;
- },
+      playGame(){
+        this.gameStart= true;
+        this.currentPlayer = person.playerOne;
 
-// functionality to end game.
-  gameOver(){
-  board.array !== "null"? "GAMEOVER": continueGame;
-  console.log("GameOver");
- },
-  switchPlayer(){
-   currentPlayer === person.playerOne ? person.playerTwo:person.playerOne;
-   return currentPlayer
- },
+       const boxes = document.querySelectorAll(".box");
 
- // functionality to manage game state and flow.
-  continueGame(placeHolder){
-    console.log(`it's ${placeHolder}'s turn to Play!`);
-   playGame();
- }
+       boxes.forEach((box, index) => {
+         box.addEventListener("click", () => this.play(index, box));
+       });
+       console.log(`It's ${this.currentPlayer}'s turn`);
+    },
+
+      //Play action 
+      play(index, box){
+        if (gameBoard.boardArray[index] === null ){
+          //replaces null with player mark
+          gameBoard.boardArray[index] = this.currentPlayer;
+          box.textContent = this.currentPlayer;
+
+          //switch player
+          this.currentPlayer =
+            this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
+            console.log(gameBoard.boardArray);
+        }
+       else{
+        alert("Oops! that spot is already taken!");
+        console.log("That spot is already taken!");
+       } 
+      },
+       
+      // functionality to manage game state and flow.
+        continueGame(placeHolder){
+          console.log(`it's ${placeHolder}'s turn to Play!`);
+        playGame();
+      },
+
+      // functionality to end game.
+        gameOver(){
+       gameBoard.boardArray!== null ? "GAMEOVER": continueGame;
+        console.log("GameOver");
+      }
+
 }
-
-
-
 
  // creating eventlistners for DOM elements.
  function eventPropagation(){
