@@ -28,8 +28,7 @@ for (let i = 1; i <= 9; i++){
     playerTwo: "O",
     playerOneName: playerOneName = alert("what is the player X name?"),
     playerTwoName: playerTwoName = alert("what is the player O name?"),
-    playerOneScore: 0,
-    playerTwoScore: 0
+    
  }
 
  // Control flow object 
@@ -81,10 +80,14 @@ for (let i = 1; i <= 9; i++){
 
 }
 
- // creating eventlistners for DOM elements.
- function eventPropagation(){
- // add eventListeners for Players
- }
+ const scoreBoard = {
 
+    playerOneScore: [playerOneName, 0],
+    playerTwoScore: [playerTwoName, 0]
+ };
 
- 
+ function updateScoreBoard(){
+   if(gameStart === true){
+
+   }
+  };
