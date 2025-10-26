@@ -103,27 +103,27 @@ for (let i = 1; i <= 9; i++){
      let playerOneWins = false;
      let playerTwoWins = false;
 
-     if ( gameBoard.boardArray[0,1,2]=== "X" || //horizontal axis
-          gameBoard.boardArray[3,4,5]=== "X" ||
-          gameBoard.boardArray[6,7,8]=== "X" ||
-          gameBoard.boardArray[0,3,6]=== "X" || //vertical axis
-          gameBoard.boardArray[1,4,7]=== "X" ||
-          gameBoard.boardArray[2,5,8]=== "X" || //diagonal axis
-          gameBoard.boardArray[0,4,8]=== "X" ||
-          gameBoard.boardArray[6,4,2]=== "X" 
-      ){
-         playerOneWins = true;
-      }
-     else if( gameBoard.boardArray[0,1,2]=== "O" || //horizontal axis
-              gameBoard.boardArray[3,4,5]=== "O" ||
-              gameBoard.boardArray[6,7,8]=== "O" ||
-              gameBoard.boardArray[0,3,6]=== "O" || //vertical axi
-              gameBoard.boardArray[1,4,7]=== "O" ||
-              gameBoard.boardArray[2,5,8]=== "O" || //diagonal axis
-              gameBoard.boardArray[0,4,8]=== "O" ||
-              gameBoard.boardArray[6,4,2]=== "O" 
-            ) {
-              playerTwoWins = true;
-            }
-    return playerOneWins, playerTwoWins;
+     const wins = [
+    [0,1,2], [3,4,5], [6,7,8], // rows
+    [0,3,6], [1,4,7], [2,5,8], // columns
+    [0,4,8], [2,4,6]           // diagonals
+  ];
+
+  for (let combo of wins) {
+    const [a, b1, c] = combo;
+
+    if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
+      return b[a] === "X" ? "Player One" : "Player Two";
+    }
+  }
+    return null; // no winner yet
+       
+return playerOneWins, playerTwoWins;
   };
+
+  function scoreCondition() {
+  const b = gameBoard.boardArray;
+
+  
+
+  
