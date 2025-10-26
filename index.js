@@ -57,37 +57,73 @@ for (let i = 1; i <= 9; i++){
 
           //switch player
           this.currentPlayer =
-            this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
-            console.log(gameBoard.boardArray);
+          this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
+          console.log(gameBoard.boardArray);
         }
        else{
-        alert("Oops! that spot is already taken!");
-        console.log("That spot is already taken!");
+          alert("Oops! that spot is already taken!");
+          console.log("That spot is already taken!");
        } 
       },
        
       // functionality to manage game state and flow.
         continueGame(placeHolder){
           console.log(`it's ${placeHolder}'s turn to Play!`);
-        playGame();
+          playGame();
       },
 
       // functionality to end game.
         gameOver(){
-       gameBoard.boardArray!== null ? "GAMEOVER": continueGame;
-        console.log("GameOver");
+         gameBoard.boardArray!== null ? "GAMEOVER": continueGame;
+         console.log("GameOver");
       }
 
 }
 
+// digital representation of a physical score board.
  const scoreBoard = {
-
     playerOneScore: [playerOneName, 0],
     playerTwoScore: [playerTwoName, 0]
  };
 
  function updateScoreBoard(){
-   if(gameStart === true){
+  scoreCondition();
+   if(gameStart === true && playerOneWins === true){
+        playerOneScore[1] += 1;
+        alert(`${playerOneScore[0]} has scored 1 point`);
+        console.log(`${playerOneScore[0]} has scored 1 point`);
+   } 
+   else if (gameStart === true && playerTwoWins === true){
+        playerTwoScore[1] += 1;
+        alert(`${playerTwoScore[0]} has scored 1 point`);
+        console.log(`${playerTwoScore[0]} has scored 1 point`);
+  };
+ }
+  function scoreCondition(){
+     let playerOneWins = false;
+     let playerTwoWins = false;
 
-   }
+     if ( gameBoard.boardArray[0,1,2]=== "X" || //horizontal axis
+          gameBoard.boardArray[3,4,5]=== "X" ||
+          gameBoard.boardArray[6,7,8]=== "X" ||
+          gameBoard.boardArray[0,3,6]=== "X" || //vertical axis
+          gameBoard.boardArray[1,4,7]=== "X" ||
+          gameBoard.boardArray[2,5,8]=== "X" || //diagonal axis
+          gameBoard.boardArray[0,4,8]=== "X" ||
+          gameBoard.boardArray[6,4,2]=== "X" 
+      ){
+         playerOneWins = true;
+      }
+     else if( gameBoard.boardArray[0,1,2]=== "O" || //horizontal axis
+              gameBoard.boardArray[3,4,5]=== "O" ||
+              gameBoard.boardArray[6,7,8]=== "O" ||
+              gameBoard.boardArray[0,3,6]=== "O" || //vertical axi
+              gameBoard.boardArray[1,4,7]=== "O" ||
+              gameBoard.boardArray[2,5,8]=== "O" || //diagonal axis
+              gameBoard.boardArray[0,4,8]=== "O" ||
+              gameBoard.boardArray[6,4,2]=== "O" 
+            ) {
+              playerTwoWins = true;
+            }
+    return playerOneWins, playerTwoWins;
   };
