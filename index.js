@@ -14,7 +14,6 @@ const container= document.querySelector(".container");
 for (let i = 1; i <= 9; i++){
   const div = document.createElement("div");
   div.className = "box";
-  div.textContent = "";
   container.appendChild(div);
 
 }
@@ -26,13 +25,13 @@ for (let i = 1; i <= 9; i++){
                 ,null,null,null
                 ,null,null,null]
 
- }
+ };
 // Player object
  const person = {
     playerOne: "X",
     playerTwo: "O",
-    playerOneName: playerOneName = alert("what is the player X name?"),
-    playerTwoName: playerTwoName = alert("what is the player O name?"),
+    playerOneName: playerOneName = prompt("Please player X enter your name?"),
+    playerTwoName: playerTwoName = prompt("Please player O enter your name?"),
     
  }
 
@@ -53,17 +52,18 @@ for (let i = 1; i <= 9; i++){
     },
 
       //Play action 
-      play(index, box){
+      play(index, div){
         if (gameBoard.boardArray[index] === null ){
           //replaces null with player mark
           gameBoard.boardArray[index] = this.currentPlayer;
-          box.textContent = this.currentPlayer;
+          div.textContent = this.currentPlayer;
 
           //switch player
           this.currentPlayer =
           this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
           updateScoreBoard();
           console.log(gameBoard.boardArray);
+          this.gameOver()
         }
        else{
         
@@ -80,18 +80,25 @@ for (let i = 1; i <= 9; i++){
 
       // functionality to end game.
         gameOver(){
-         (gameBoard.boardArray!== null || (scoreBoard.playerOneScore[1] === 5 || scoreBoard.playerTwoScore[1] === 5)) ? alert("GAMEOVER!!"): this.continueGame;
-          console.log("GameOver");
+         if (
+             !gameBoard.boardArray.includes(null) || 
+             scoreBoard.playerOneScore[1] === 5 || 
+             scoreBoard.playerTwoScore[1] === 5){
+               alert("GAMEOVER!!");
+               console.log("GameOver");
+              }else{
+                this.continueGame();
+              }
       }
-
+   
 }
-control.gameOver();
+
 
 // digital representation of a physical score board.
  const scoreBoard = {
 
-    playerOneScore: [playerOneName, 0],
-    playerTwoScore: [playerTwoName, 0]
+    playerOneScore: [person.playerOneName, 0],
+    playerTwoScore: [person.playerTwoName, 0]
 
  };
 
