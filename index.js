@@ -1,13 +1,13 @@
 // let's Welcome the Players
-console.log("Get Ready to Play!!");
- setTimeout(function(){console.log("gameStart!!!");},3000);
+console.log("Are you Ready to Play!!");
+ setTimeout(function(){console.log("Have Fun!!!");},3000);
 
 //Start button
 const button = document.querySelector(".button");
 button.addEventListener("click",()=>{
   control.playGame();
   button.textContent= "RESTART";
-})
+});
 
 //make table
 const container= document.querySelector(".container");
@@ -39,18 +39,17 @@ for (let i = 1; i <= 9; i++){
  // Control flow object 
  const control = {
     gameStart:false,
-   currentPlayer: null,
+    currentPlayer: null,
 
       playGame(){
         this.gameStart= true;
         this.currentPlayer = person.playerOne;
 
        const boxes = document.querySelectorAll(".box");
-
        boxes.forEach((box, index) => {
          box.addEventListener("click", () => this.play(index, box));
        });
-       console.log(`It's ${this.currentPlayer}'s turn`);
+       this.continueGame();
     },
 
       //Play action 
@@ -63,32 +62,37 @@ for (let i = 1; i <= 9; i++){
           //switch player
           this.currentPlayer =
           this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
+          updateScoreBoard();
           console.log(gameBoard.boardArray);
         }
        else{
+        
           alert("Oops! that spot is already taken!");
           console.log("That spot is already taken!");
        } 
       },
        
       // functionality to manage game state and flow.
-        continueGame(placeHolder){
-          console.log(`it's ${placeHolder}'s turn to Play!`);
-          playGame();
+        continueGame(){
+          console.log(`it's ${this.currentPlayer}'s turn to Play!`);
+          alert(`it's ${this.currentPlayer}'s turn to Play!`);
       },
 
       // functionality to end game.
         gameOver(){
-         gameBoard.boardArray!== null ? "GAMEOVER": continueGame;
-         console.log("GameOver");
+         (gameBoard.boardArray!== null || (scoreBoard.playerOneScore[1] === 5 || scoreBoard.playerTwoScore[1] === 5)) ? alert("GAMEOVER!!"): this.continueGame;
+          console.log("GameOver");
       }
 
 }
+control.gameOver();
 
 // digital representation of a physical score board.
  const scoreBoard = {
+
     playerOneScore: [playerOneName, 0],
     playerTwoScore: [playerTwoName, 0]
+
  };
 
  function updateScoreBoard(){
