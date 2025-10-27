@@ -100,8 +100,10 @@ for (let i = 1; i <= 9; i++){
   };
  }
   function scoreCondition(){
+
      let playerOneWins = false;
      let playerTwoWins = false;
+     const b = gameBoard.boardArray;
 
      const wins = [
     [0,1,2], [3,4,5], [6,7,8], // rows
@@ -110,19 +112,17 @@ for (let i = 1; i <= 9; i++){
   ];
 
   for (let combo of wins) {
-    const [a, b1, c] = combo;
+    const [a, b, c] = combo;
 
-    if (b[a] && b[a] === b[b1] && b[a] === b[c]) {
-      return b[a] === "X" ? "Player One" : "Player Two";
+    if (b[a] && b[a] === b[b] && b[a] === b[c]) {
+      return b[a] === "X" ? playerOneWins = true  : playerTwoWins = true;
     }
   }
     return null; // no winner yet
        
-return playerOneWins, playerTwoWins;
   };
 
-  function scoreCondition() {
-  const b = gameBoard.boardArray;
+  
 
   
 
