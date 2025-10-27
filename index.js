@@ -2,7 +2,12 @@
 console.log("Get Ready to Play!!");
  setTimeout(function(){console.log("gameStart!!!");},3000);
 
-
+//Start button
+const button = document.querySelector(".button");
+button.addEventListener("click",()=>{
+  control.playGame();
+  button.textContent= "RESTART";
+})
 
 //make table
 const container= document.querySelector(".container");
