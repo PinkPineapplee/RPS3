@@ -93,7 +93,8 @@ for (let i = 1; i <= 9; i++){
    
 }
 
-
+     let playerOneWins = false;
+     let playerTwoWins = false;  
 // digital representation of a physical score board.
  const scoreBoard = {
 
@@ -103,7 +104,11 @@ for (let i = 1; i <= 9; i++){
  };
 
  function updateScoreBoard(){
-  scoreCondition();
+scoreCondition()
+  scoreCondition === "X"?
+     playerOneWins = true: playerTwoWins = true;
+
+  
    if(gameStart === true && playerOneWins === true){
         playerOneScore[1] += 1;
         alert(`${playerOneScore[0]} has scored 1 point`);
@@ -117,8 +122,7 @@ for (let i = 1; i <= 9; i++){
  }
   function scoreCondition(){
 
-     let playerOneWins = false;
-     let playerTwoWins = false;
+     
      const b = gameBoard.boardArray;
 
      const wins = [
@@ -131,7 +135,9 @@ for (let i = 1; i <= 9; i++){
     const [a, b, c] = combo;
 
     if (b[a] && b[a] === b[b] && b[a] === b[c]) {
-      return b[a] === "X" ? playerOneWins = true  : playerTwoWins = true;
+      return b[a] === "X" ? "O"  : "X";
+     
+      
     }
   }
     return null; // no winner yet
