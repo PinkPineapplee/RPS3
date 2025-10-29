@@ -2,14 +2,7 @@
 console.log("Are you Ready to Play!!");
  setTimeout(function(){console.log("Have Fun!!!");},3000);
 
-//Start button
-const button = document.querySelector(".button");
-button.addEventListener("click",()=>{
-  control.playGame();
-  button.textContent= "RESTART";
-});
-
-//make table
+ //make table
 const container= document.querySelector(".container");
 for (let i = 1; i <= 9; i++){
   const div = document.createElement("div");
@@ -17,6 +10,15 @@ for (let i = 1; i <= 9; i++){
   container.appendChild(div);
 
 }
+
+//Start button
+const button = document.querySelector(".button");
+button.addEventListener("click",()=>{
+  control.playGame();
+  button.textContent= "RESTART";
+});
+
+
 
 
 //Gameboard object
@@ -31,10 +33,12 @@ for (let i = 1; i <= 9; i++){
     playerOne: "X",
     playerTwo: "O",
     playerOneName: playerOneName = prompt("Please player X enter your name?") || "Player X",
-    playerTwoName: playerTwoName = prompt("Please player O enter your name?") || "Player O",
-    
- }
-
+    playerTwoName: playerTwoName = prompt("Please player O enter your name?") || "Player O"
+  
+ };
+ 
+playerOne.className = "x";
+playerTwo.className = "o";
  // Control flow object 
  const control = {
     gameStart:false,
@@ -142,15 +146,6 @@ for (let i = 1; i <= 9; i++){
   };
 
   
-// Reset logic**
-// When you click “RESTART”, you could:
-
-// * Clear the board
-// * Reset `boardArray`
-// * Reset `gameStart`
-// * Reinitialize scores or continue from previous state
-
-// This improves user experience and prevents hidden bugs.
   function reset(){
     button.addEventListener("click",()=>{
    if( button.textContent === "RESTART"){
