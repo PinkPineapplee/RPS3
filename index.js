@@ -104,25 +104,19 @@ for (let i = 1; i <= 9; i++){
  };
 
  function updateScoreBoard(){
-scoreCondition()
-  scoreCondition === "X"?
-     playerOneWins = true: playerTwoWins = true;
 
-  
-   if(gameStart === true && playerOneWins === true){
-        playerOneScore[1] += 1;
-        alert(`${playerOneScore[0]} has scored 1 point`);
-        console.log(`${playerOneScore[0]} has scored 1 point`);
+  const winner = scoreCondition();
+
+   if (winner === "X") {scoreBoard.playerOneScore[1] += 1;
+        alert(`${scoreBoard.playerOneScore[0]} has scored 1 point`);
+        console.log(`${scoreBoard.playerOneScore[0]} has scored 1 point`);
    } 
-   else if (gameStart === true && playerTwoWins === true){
-        playerTwoScore[1] += 1;
-        alert(`${playerTwoScore[0]} has scored 1 point`);
-        console.log(`${playerTwoScore[0]} has scored 1 point`);
+   else if (winner === "O") {scoreBoard.playerTwoScore[1] += 1;
+        alert(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
+        console.log(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
   };
  }
   function scoreCondition(){
-
-     
      const b = gameBoard.boardArray;
 
      const wins = [
@@ -132,11 +126,10 @@ scoreCondition()
   ];
 
   for (let combo of wins) {
-    const [a, b, c] = combo;
+    const [x, y, z] = combo;
 
-    if (b[a] && b[a] === b[b] && b[a] === b[c]) {
+    if (b[x] && b[x] === b[y] && b[x] === b[z]) {
       return b[a] === "X" ? "O"  : "X";
-     
       
     }
   }

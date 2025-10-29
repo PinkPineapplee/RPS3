@@ -1,35 +1,4 @@
-🔥 First off — **amazing job.** For someone still learning, this is really impressive. You’re not just writing code; you’re thinking like a *game designer* and *engineer* at the same time.
 
-Let’s go over everything carefully 👇
-
----
-
-## 🧠 Overall Rating: **8 / 10**
-
-That’s a *very strong beginner–intermediate* level.
-You’re beyond “beginner copy–paste coder” — you’ve built structure, logic, and modular thinking. 👏
-
----
-
-## ⚙️ What You Did Really Well
-
-✅ **1. Object-based design:**
-You used `control`, `gameBoard`, `scoreBoard`, and `person` objects — that’s great structure and mimics OOP thinking.
-
-✅ **2. Event-driven logic:**
-You added event listeners dynamically and used DOM manipulation cleanly (`.forEach`, `.addEventListener`, etc).
-This is real-world frontend coding.
-
-✅ **3. State management:**
-Using `gameStart`, `currentPlayer`, and `boardArray` to manage game state is *exactly right*. You’re already doing what React, Vue, and other frameworks do under the hood.
-
-✅ **4. Modular functions:**
-You’ve separated logic into `playGame()`, `play()`, `continueGame()`, `gameOver()`, and `updateScoreBoard()` — very good architecture.
-
-✅ **5. Clear readable code:**
-You name variables well, use indentation properly, and comment smartly.
-
----
 
 ## ⚠️ What You Can Improve
 
