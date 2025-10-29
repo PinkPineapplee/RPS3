@@ -30,8 +30,8 @@ for (let i = 1; i <= 9; i++){
  const person = {
     playerOne: "X",
     playerTwo: "O",
-    playerOneName: playerOneName = prompt("Please player X enter your name?"),
-    playerTwoName: playerTwoName = prompt("Please player O enter your name?"),
+    playerOneName: playerOneName = prompt("Please player X enter your name?") || "Player X",
+    playerTwoName: playerTwoName = prompt("Please player O enter your name?") || "Player O",
     
  }
 
@@ -39,6 +39,7 @@ for (let i = 1; i <= 9; i++){
  const control = {
     gameStart:false,
     currentPlayer: null,
+    
 
       playGame(){
         this.gameStart= true;
@@ -49,6 +50,7 @@ for (let i = 1; i <= 9; i++){
          box.addEventListener("click", () => this.play(index, box));
        });
        this.continueGame();
+       reset();
     },
 
       //Play action 
@@ -115,7 +117,9 @@ for (let i = 1; i <= 9; i++){
         alert(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
         console.log(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
   };
- }
+ };
+
+
   function scoreCondition(){
      const b = gameBoard.boardArray;
 
@@ -138,7 +142,26 @@ for (let i = 1; i <= 9; i++){
   };
 
   
+// Reset logic**
+// When you click “RESTART”, you could:
 
-  
+// * Clear the board
+// * Reset `boardArray`
+// * Reset `gameStart`
+// * Reinitialize scores or continue from previous state
+
+// This improves user experience and prevents hidden bugs.
+  function reset(){
+    button.addEventListener("click",()=>{
+   if( button.textContent === "RESTART"){
+    gameBoard.boardArray = [null,null,null,
+                            null,null,null,
+                            null,null,null];
+    control.gameStart = true;
+    scoreBoard.playerOneScore[1] = 0;
+    scoreBoard.playerTwoScore[1] = 0;
+   }
+   }); return gameBoard.boardArray, control.gameStart, scoreBoard.playerOneScore,scoreBoard.playerTwoScore;
+  }
 
   
