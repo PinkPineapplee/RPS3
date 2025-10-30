@@ -11,14 +11,8 @@ for (let i = 1; i <= 9; i++){
 
 }
 
-//Start button
-const button = document.querySelector(".button");
-button.addEventListener("click",()=>{
-  control.playGame();
-  button.textContent= "RESTART";
-});
 
-
+let is_winner= false;
 
 
 //Gameboard object
@@ -36,9 +30,9 @@ button.addEventListener("click",()=>{
     playerTwoName: playerTwoName = prompt("Please player O enter your name?") || "Player O"
   
  };
- 
-playerOne.className = "x";
-playerTwo.className = "o";
+
+person.playerOne.className = "x";
+person.playerTwo.className = "o";
  // Control flow object 
  const control = {
     gameStart:false,
@@ -80,8 +74,13 @@ playerTwo.className = "o";
        
       // functionality to manage game state and flow.
         continueGame(){
+          if(is_winner === true){
+            gameBoard.boardArray = [null,null,null,
+                                    null,null,null,
+                                   null,null,null];
+          } else{
           console.log(`it's ${this.currentPlayer}'s turn to Play!`);
-          alert(`it's ${this.currentPlayer}'s turn to Play!`);
+          alert(`it's ${this.currentPlayer}'s turn to Play!`);}
       },
 
       // functionality to end game.
@@ -114,10 +113,12 @@ playerTwo.className = "o";
   const winner = scoreCondition();
 
    if (winner === "X") {scoreBoard.playerOneScore[1] += 1;
+        is_winner= true;
         alert(`${scoreBoard.playerOneScore[0]} has scored 1 point`);
         console.log(`${scoreBoard.playerOneScore[0]} has scored 1 point`);
    } 
    else if (winner === "O") {scoreBoard.playerTwoScore[1] += 1;
+        is_winner= true;
         alert(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
         console.log(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
   };
@@ -145,10 +146,24 @@ playerTwo.className = "o";
        
   };
 
-  
+  //Start button
+const button = document.querySelector(".button");
+button.addEventListener("click",()=>{
+  control.playGame();
+  button.textContent= "RESTART";
+  reset()
+});
+
   function reset(){
-    button.addEventListener("click",()=>{
-   if( button.textContent === "RESTART"){
+   
+   if( scoreCondition ==="X"|| scoreCondition === "O"){
+    gameBoard.boardArray = [null,null,null,
+                            null,null,null,
+                            null,null,null];
+    // control.gameStart = true;
+    //  container.textContent=scoreBoard.playerOneScore[1];
+    // container.textContent= scoreBoard.playerTwoScore[1];
+   } else if (button.textContent === "RESTART" ){
     gameBoard.boardArray = [null,null,null,
                             null,null,null,
                             null,null,null];
@@ -156,7 +171,7 @@ playerTwo.className = "o";
     scoreBoard.playerOneScore[1] = 0;
     scoreBoard.playerTwoScore[1] = 0;
    }
-   }); return gameBoard.boardArray, control.gameStart, scoreBoard.playerOneScore,scoreBoard.playerTwoScore;
+    return gameBoard.boardArray, control.gameStart, scoreBoard.playerOneScore,scoreBoard.playerTwoScore;
   }
 
   
