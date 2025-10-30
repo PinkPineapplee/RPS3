@@ -39,7 +39,7 @@ person.playerTwo.className = "o";
     currentPlayer: null,
     
 
-      playGame(){
+    playGame(){
         this.gameStart= true;
         this.currentPlayer = person.playerOne;
 
@@ -52,7 +52,7 @@ person.playerTwo.className = "o";
     },
 
       //Play action 
-      play(index, div){
+    play(index, div){
         if (gameBoard.boardArray[index] === null ){
           //replaces null with player mark
           gameBoard.boardArray[index] = this.currentPlayer;
@@ -73,7 +73,7 @@ person.playerTwo.className = "o";
       },
        
       // functionality to manage game state and flow.
-        continueGame(){
+     continueGame(){
           if(is_winner === true){
             gameBoard.boardArray = [null,null,null,
                                     null,null,null,
@@ -84,7 +84,7 @@ person.playerTwo.className = "o";
       },
 
       // functionality to end game.
-        gameOver(){
+    gameOver(){
          if (
              !gameBoard.boardArray.includes(null) || 
              scoreBoard.playerOneScore[1] === 5 || 
@@ -138,7 +138,7 @@ person.playerTwo.className = "o";
     const [x, y, z] = combo;
 
     if (b[x] && b[x] === b[y] && b[x] === b[z]) {
-      return b[a] === "X" ? "O"  : "X";
+      return b[x] === "X" ? "O"  : "X";
       
     }
   }
