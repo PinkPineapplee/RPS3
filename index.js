@@ -54,16 +54,16 @@ person.playerTwo.className = "o";
       //Play action 
     play(index, div){
         if (gameBoard.boardArray[index] === null ){
-          //replaces null with player mark
-          gameBoard.boardArray[index] = this.currentPlayer;
-          div.textContent = this.currentPlayer;
+            //replaces null with player mark
+            gameBoard.boardArray[index] = this.currentPlayer;
+            div.textContent = this.currentPlayer;
 
-          //switch player
-          this.currentPlayer =
-          this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
-          updateScoreBoard();
-          console.log(gameBoard.boardArray);
-          this.gameOver()
+            //switch player
+            this.currentPlayer =
+            this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
+            updateScoreBoard();
+            console.log(gameBoard.boardArray);
+            this.gameOver()
         }
        else{
         
@@ -73,14 +73,17 @@ person.playerTwo.className = "o";
       },
        
       // functionality to manage game state and flow.
-     continueGame(){
+    continueGame(){
           if(is_winner === true){
             gameBoard.boardArray = [null,null,null,
                                     null,null,null,
                                    null,null,null];
+
+              div.textContent = gameBoard.boardArray;
           } else{
-          console.log(`it's ${this.currentPlayer}'s turn to Play!`);
-          alert(`it's ${this.currentPlayer}'s turn to Play!`);}
+          console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
+        } 
+        return gameBoard.boardArray;
       },
 
       // functionality to end game.
@@ -160,6 +163,7 @@ button.addEventListener("click",()=>{
     gameBoard.boardArray = [null,null,null,
                             null,null,null,
                             null,null,null];
+      div.textContent =  gameBoard.boardArray;                    
     // control.gameStart = true;
     //  container.textContent=scoreBoard.playerOneScore[1];
     // container.textContent= scoreBoard.playerTwoScore[1];
