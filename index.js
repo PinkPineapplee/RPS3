@@ -8,10 +8,10 @@ for (let i = 1; i <= 9; i++){
   const div = document.createElement("div");
   div.className = "box";
   container.appendChild(div);
-
+ 
 }
 
-
+const div = document.querySelectorAll(".box");
 let is_winner= false;
 
 
