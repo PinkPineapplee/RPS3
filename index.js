@@ -46,9 +46,10 @@ person.playerTwo.className = "o";
        const boxes = document.querySelectorAll(".box");
        boxes.forEach((box, index) => {
          box.addEventListener("click", () => this.play(index, box));
+         this.continueGame();
+         reset();
        });
-       this.continueGame();
-       reset();
+       
     },
 
       //Play action 
@@ -115,12 +116,14 @@ person.playerTwo.className = "o";
 
   const winner = scoreCondition();
 
-   if (winner === "X") {scoreBoard.playerOneScore[1] += 1;
+   if (winner === "X") {
+        scoreBoard.playerOneScore[1] += 1;
         is_winner= true;
         alert(`${scoreBoard.playerOneScore[0]} has scored 1 point`);
         console.log(`${scoreBoard.playerOneScore[0]} has scored 1 point`);
    } 
-   else if (winner === "O") {scoreBoard.playerTwoScore[1] += 1;
+   else if (winner === "O") {
+        scoreBoard.playerTwoScore[1] += 1;
         is_winner= true;
         alert(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
         console.log(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
