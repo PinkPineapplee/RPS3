@@ -76,15 +76,15 @@ person.playerTwo.className = "o";
       // functionality to manage game state and flow.
     continueGame(){
           if(is_winner === true){
-            gameBoard.boardArray = [null,null,null,
-                                    null,null,null,
-                                   null,null,null];
-
-              div.textContent = gameBoard.boardArray;
+           gameBoard.boardArray = Array(9).fill(null);
+           document.querySelectorAll(".box").forEach(cell => {
+            cell.textContent = '';
+           });
+           this.playGame();
           } else{
           console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
         } 
-        return gameBoard.boardArray;
+        
       },
 
       // functionality to end game.
@@ -128,6 +128,7 @@ person.playerTwo.className = "o";
         alert(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
         console.log(`${scoreBoard.playerTwoScore[0]} has scored 1 point`);
   };
+  return is_winner;
  };
 
 
@@ -144,7 +145,7 @@ person.playerTwo.className = "o";
     const [x, y, z] = combo;
 
     if (b[x] && b[x] === b[y] && b[x] === b[z]) {
-      return b[x] === "X" ? "O"  : "X";
+      return b[x] === "X" ? "X"  : "O";
       
     }
   }
