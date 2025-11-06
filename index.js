@@ -33,12 +33,15 @@ let is_winner= false;
 
 person.playerOne.className = "x";
 person.playerTwo.className = "o";
+
+
+
  // Control flow object 
  const control = {
+
     gameStart:false,
     currentPlayer: null,
     
-
     playGame(){
         this.gameStart= true;
         this.currentPlayer = person.playerOne;
@@ -46,11 +49,26 @@ person.playerTwo.className = "o";
        const boxes = document.querySelectorAll(".box");
        boxes.forEach((box, index) => {
          box.addEventListener("click", () => this.play(index, box));
-         this.continueGame();
-         reset();
        });
        
     },
+
+     // functionality to manage game state and flow.
+    continueGame(){
+          if(is_winner === true){
+           gameBoard.boardArray = Array(9).fill(null);
+           document.querySelectorAll(".box").forEach(cell => {
+            cell.textContent = '';
+            
+           });
+           this.playGame();
+          
+          } else{
+          console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
+        } 
+        
+      },
+
 
       //Play action 
     play(index, div){
@@ -62,7 +80,9 @@ person.playerTwo.className = "o";
             //switch player
             this.currentPlayer =
             this.currentPlayer === person.playerOne ? person.playerTwo : person.playerOne;
+
             updateScoreBoard();
+            
             console.log(gameBoard.boardArray);
             this.gameOver()
         }
@@ -73,19 +93,7 @@ person.playerTwo.className = "o";
        } 
       },
        
-      // functionality to manage game state and flow.
-    continueGame(){
-          if(is_winner === true){
-           gameBoard.boardArray = Array(9).fill(null);
-           document.querySelectorAll(".box").forEach(cell => {
-            cell.textContent = '';
-           });
-           this.playGame();
-          } else{
-          console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
-        } 
-        
-      },
+     
 
       // functionality to end game.
     gameOver(){
@@ -95,6 +103,7 @@ person.playerTwo.className = "o";
              scoreBoard.playerTwoScore[1] === 5){
                alert("GAMEOVER!!");
                console.log("GameOver");
+                reset();
               }else{
                 this.continueGame();
               }
@@ -158,26 +167,18 @@ const button = document.querySelector(".button");
 button.addEventListener("click",()=>{
   control.playGame();
   button.textContent= "RESTART";
-  reset()
+  reset();
 });
 
   function reset(){
    
-   if( scoreCondition ==="X"|| scoreCondition === "O"){
-    gameBoard.boardArray = [null,null,null,
-                            null,null,null,
-                            null,null,null];
-      div.textContent =  gameBoard.boardArray;                    
-    // control.gameStart = true;
-    //  container.textContent=scoreBoard.playerOneScore[1];
-    // container.textContent= scoreBoard.playerTwoScore[1];
-   } else if (button.textContent === "RESTART" ){
-    gameBoard.boardArray = [null,null,null,
-                            null,null,null,
-                            null,null,null];
-    control.gameStart = true;
+   if (button.textContent === "RESTART" && button.onclick ){
+    gameBoard.boardArray = Array(9).fill(null);
+    document.querySelectorAll('.box').forEach(cell => cell.textContent = " " )
+    control.gameStart = false;
     scoreBoard.playerOneScore[1] = 0;
     scoreBoard.playerTwoScore[1] = 0;
+    button.textContent= "START";
    }
     return gameBoard.boardArray, control.gameStart, scoreBoard.playerOneScore,scoreBoard.playerTwoScore;
   }
