@@ -57,10 +57,7 @@ person.playerTwo.className = "o";
     continueGame(){
           if(is_winner === true){
            gameBoard.boardArray = Array(9).fill(null);
-           document.querySelectorAll(".box").forEach(cell => {
-            cell.textContent = '';
-            
-           });
+           document.querySelectorAll(".box").forEach(cell => cell.textContent = '');
            this.playGame();
           
           } else{
