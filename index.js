@@ -53,19 +53,7 @@ person.playerTwo.className = "o";
        
     },
 
-     // functionality to manage game state and flow.
-    continueGame(){
-          if(is_winner === true){
-           gameBoard.boardArray = Array(9).fill(null);
-           document.querySelectorAll(".box").forEach(cell => cell.textContent = '');
-           this.playGame();
-          
-          } else{
-          console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
-        } 
-        
-      },
-
+     
 
       //Play action 
     play(index, div){
@@ -91,6 +79,16 @@ person.playerTwo.className = "o";
       },
        
      
+// functionality to manage game state and flow.
+    continueGame(){
+          if(is_winner === true){
+           gameBoard.boardArray = Array(9).fill(null);
+           document.querySelectorAll(".box").forEach(cell => cell.textContent = '');
+          } else{
+          console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
+        } 
+        
+      },
 
       // functionality to end game.
     gameOver(){
@@ -107,7 +105,7 @@ person.playerTwo.className = "o";
       }
    
 }
-
+debugger
      let playerOneWins = false;
      let playerTwoWins = false;  
 // digital representation of a physical score board.
