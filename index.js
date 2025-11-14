@@ -89,30 +89,61 @@ person.playerTwo.className = "o";
     continueGame(){
           if(is_winner === true){
            gameBoard.boardArray = Array(9).fill(null);
-           document.querySelectorAll(".box").forEach(cell => cell.textContent = '');
-           
-          } else{
-          console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
-        } 
-        
-      },
+           document.querySelectorAll(".box").forEach((box, index) =>{ 
+            box.textcontent = '';
+          });
+     // Reset winner flag
+    is_winner = false;
+    
+    // Check if someone has reached 5 points
+    if (scoreBoard.playerOneScore[1] >= 5) {
+      alert(`${scoreBoard.playerOneScore[0]} wins the game with 5 points!`);
+      console.log(`${scoreBoard.playerOneScore[0]} wins the game!`);
+      reset(); // Full game reset
+      return;
+    } else if (scoreBoard.playerTwoScore[1] >= 5) {
+      alert(`${scoreBoard.playerTwoScore[0]} wins the game with 5 points!`);
+      console.log(`${scoreBoard.playerTwoScore[0]} wins the game!`);
+      reset(); // Full game reset
+      return;
+    }
+    
+    // Continue to next round - restart game without resetting scores
+    this.playGame();
+    
+  } else {
+    console.log(`It's ${this.currentPlayer}'s turn to Play!`); 
+  } 
+},
+
 
       // functionality to end game.
-    gameOver(){
-         if (
-             !gameBoard.boardArray.includes(null) || 
-             scoreBoard.playerOneScore[1] === 5 || 
-             scoreBoard.playerTwoScore[1] === 5){
-               alert("GAMEOVER!!");
-               console.log("GameOver");
-                reset();
-              }else{
-                this.continueGame();
-              }
-      }
+   // Updated gameOver function
+gameOver(){
+  // Check if board is full (tie)
+  if (!gameBoard.boardArray.includes(null) && !is_winner) {
+    alert("It's a tie! Starting new round...");
+    console.log("Tie game");
+    setTimeout(() => {
+      this.continueGame();
+    }, 1000);
+  }
+  // Check if someone won the round
+  else if (is_winner === true) {
+    setTimeout(() => {
+      this.continueGame();
+    }, 1000);
+  }
+  // Check if someone reached 5 points
+  else if (scoreBoard.playerOneScore[1] >= 5 || scoreBoard.playerTwoScore[1] >= 5) {
+    alert("GAMEOVER!!");
+    console.log("GameOver");
+    reset();
+  }
+}
    
 }
-debugger
+
      let playerOneWins = false;
      let playerTwoWins = false;  
 // digital representation of a physical score board.
