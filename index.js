@@ -198,16 +198,14 @@ button.addEventListener("click",()=>{
 });
 
   function reset(){
-   
-   button.addEventListener("click",()=>{
-    gameBoard.boardArray = Array(9).fill(null);
-    document.querySelectorAll('.box').forEach(cell => cell.textContent = " " )
-    control.gameStart = false;
-    scoreBoard.playerOneScore[1] = 0;
-    scoreBoard.playerTwoScore[1] = 0;
-    button.textContent= "START";
-   })
-    return gameBoard.boardArray, control.gameStart, scoreBoard.playerOneScore,scoreBoard.playerTwoScore;
+   return (
+    gameBoard.boardArray = Array(9).fill(null),
+    document.querySelectorAll('.box').forEach(cell => cell.textContent = " " ),
+    control.gameStart = false,
+    scoreBoard.playerOneScore[1] = 0,
+    scoreBoard.playerTwoScore[1] = 0,
+    button.textContent= "START"
+   )
   }
 
   
