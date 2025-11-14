@@ -118,26 +118,22 @@ person.playerTwo.className = "o";
       // functionality to end game.
    // Updated gameOver function
 gameOver(){
-  // Check if board is full (tie)
-  if (!gameBoard.boardArray.includes(null) && !is_winner) {
-    alert("It's a tie! Starting new round...");
-    console.log("Tie game");
-    setTimeout(() => {
-      this.continueGame();
-    }, 1000);
-  }
-  // Check if someone won the round
-  else if (is_winner === true) {
-    setTimeout(() => {
-      this.continueGame();
-    }, 1000);
-  }
-  // Check if someone reached 5 points
-  else if (scoreBoard.playerOneScore[1] >= 5 || scoreBoard.playerTwoScore[1] >= 5) {
-    alert("GAMEOVER!!");
-    console.log("GameOver");
-    reset();
-  }
+      // Check if board is full (tie)
+      if (!gameBoard.boardArray.includes(null) && !is_winner) {
+            alert("It's a tie! Starting new round...");
+            console.log("Tie game");
+            setTimeout(() => { this.continueGame()}, 1000);
+      }
+      // Check if someone won the round
+      else if (is_winner === true) {
+            setTimeout(() => { this.continueGame()}, 1000);
+      }
+      // Check if someone reached 5 points
+      else if (scoreBoard.playerOneScore[1] >= 5 || scoreBoard.playerTwoScore[1] >= 5) {
+              alert("GAMEOVER!!");
+              console.log("GameOver");
+              reset();
+      }
 }
    
 }
