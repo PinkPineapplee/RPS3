@@ -89,27 +89,25 @@ person.playerTwo.className = "o";
     continueGame(){
           if(is_winner === true){
            gameBoard.boardArray = Array(9).fill(null);
-           document.querySelectorAll(".box").forEach((box, index) =>{ 
-            box.textcontent = '';
-          });
-     // Reset winner flag
-    is_winner = false;
+           document.querySelectorAll(".box").forEach(box => box.textcontent = '');
+          // Reset winner flag
+          is_winner = false;
     
-    // Check if someone has reached 5 points
-    if (scoreBoard.playerOneScore[1] >= 5) {
-      alert(`${scoreBoard.playerOneScore[0]} wins the game with 5 points!`);
-      console.log(`${scoreBoard.playerOneScore[0]} wins the game!`);
-      reset(); // Full game reset
-      return;
-    } else if (scoreBoard.playerTwoScore[1] >= 5) {
-      alert(`${scoreBoard.playerTwoScore[0]} wins the game with 5 points!`);
-      console.log(`${scoreBoard.playerTwoScore[0]} wins the game!`);
-      reset(); // Full game reset
-      return;
-    }
-    
-    // Continue to next round - restart game without resetting scores
-    this.playGame();
+        // Check if someone has reached 5 points
+        if (scoreBoard.playerOneScore[1] == 5) {
+          alert(`${scoreBoard.playerOneScore[0]} wins the game with 5 points!`);
+          console.log(`${scoreBoard.playerOneScore[0]} wins the game!`);
+          reset(); // Full game reset
+          return;
+        } else if (scoreBoard.playerTwoScore[1] == 5) {
+          alert(`${scoreBoard.playerTwoScore[0]} wins the game with 5 points!`);
+          console.log(`${scoreBoard.playerTwoScore[0]} wins the game!`);
+          reset(); // Full game reset
+          return;
+        }
+        
+        // Continue to next round - restart game without resetting scores
+        this.playGame();
     
   } else {
     console.log(`It's ${this.currentPlayer}'s turn to Play!`); 
@@ -205,14 +203,14 @@ button.addEventListener("click",()=>{
 
   function reset(){
    
-   if (button.textContent === "RESTART" && button.onclick ){
+   button.addEventListener("click",()=>{
     gameBoard.boardArray = Array(9).fill(null);
     document.querySelectorAll('.box').forEach(cell => cell.textContent = " " )
     control.gameStart = false;
     scoreBoard.playerOneScore[1] = 0;
     scoreBoard.playerTwoScore[1] = 0;
     button.textContent= "START";
-   }
+   })
     return gameBoard.boardArray, control.gameStart, scoreBoard.playerOneScore,scoreBoard.playerTwoScore;
   }
 
