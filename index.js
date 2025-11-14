@@ -48,7 +48,13 @@ person.playerTwo.className = "o";
 
        const boxes = document.querySelectorAll(".box");
        boxes.forEach((box, index) => {
-         box.addEventListener("click", () => this.play(index, box));
+       // Remove old listeners before adding new ones
+       box.replaceWith(box.cloneNode(true));
+       });
+
+       const freshBoxes = document.querySelectorAll(".box");
+       freshBoxes.forEach((box, index) => {
+       box.addEventListener("click", () => this.play(index, box));
        });
        
     },
@@ -84,6 +90,7 @@ person.playerTwo.className = "o";
           if(is_winner === true){
            gameBoard.boardArray = Array(9).fill(null);
            document.querySelectorAll(".box").forEach(cell => cell.textContent = '');
+           
           } else{
           console.log(`it's ${this.currentPlayer}'s turn to Play!`); 
         } 
